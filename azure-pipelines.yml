@@ -2,7 +2,6 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-
 trigger:
 - none
 
@@ -19,7 +18,7 @@ steps:
   displayName: 'Checkov Static Code Analysis'
   inputs:
     targetType: 'inline'
-    script: checkov -d .  --check LOW --output        junitxml > $(System.DefaultWorkingDirectory)/checkov-report.xml
+    script: checkov -d ./   --output junitxml > $(System.DefaultWorkingDirectory)/checkov-report.xml
 - task: PublishTestResults@2
   displayName: 'Publish checkov Test Results'
   condition: succeededOrFailed()
